@@ -1,0 +1,39 @@
+RelPrime <- function(n,m){
+ 
+  rp <- 1
+  k <- min(n,m)
+  for (i in 2:k){
+    if(n %% i == 0 & m %% i == 0){
+      rp <- 0
+    }
+  }
+  return(rp)
+}
+
+
+PTriples <- function(n){
+
+  A <- c()
+  for (i in 1:n){
+    for (j in i:n){
+      k <- sqrt(i^2 + j^2)
+      if (floor(k) == ceiling(k) & RelPrime(i,j)){
+        v <- c(i,j,k)
+        A <- rbind(A,v)
+      }
+    }
+  }
+  return(A)
+}
+     
+div35 <- function(n){
+
+S <- 0
+for (i in 1:n){
+  if(i %% 3 == 0 | i %% 5 == 0){
+    S <- S + 1
+  }
+}
+return(S)
+}
+
